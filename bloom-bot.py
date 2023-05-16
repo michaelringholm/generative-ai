@@ -44,6 +44,10 @@ generate_response(input_text, device, model)
 print("---------------------------------------------------------------")
 input_text = "In 20 words explain cloud computing?"
 generate_response(input_text, device, model)
+input_text = "In 20 words advise me how to make my teenage at home clean her room?"
+generate_response(input_text, device, model)
+input_text = "Create a short story, max 200 words, about a bear, a fox, and them playing football? The fox was evil."
+generate_response(input_text, device, model)
 
 
 

@@ -1,4 +1,4 @@
-# pip install -q transformers
+    # pip install -q transformers
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 checkpoint = "bigscience/bloomz-1b7"

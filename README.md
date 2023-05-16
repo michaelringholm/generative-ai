@@ -1,1 +1,4 @@
-# How to use generative AI
+# Generative AI - Locally
+
+# Install CUDA for PyTorch
+https://pytorch.org/get-started/locally/
