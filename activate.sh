@@ -1,0 +1,1 @@
+/O/venvs/g-ai/venv/Scripts/activate

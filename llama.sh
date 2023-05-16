@@ -1,0 +1,1 @@
+python src/transformers/models/llama/convert_llama_weights_to_hf.py \ --input_dir /path/to/downloaded/llama/weights --model_size 7B --output_dir o:/models
