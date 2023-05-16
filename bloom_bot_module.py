@@ -35,6 +35,10 @@ def init():
         print("No NVIDIDA GPU available, using CPU instead.")
         device='cpu'
     model.to(device)
+    print("Welcome to Bloom chat [using:", model_name, "]")
+    print("MODEL:", model)
+    print("DEVICE:", device)
+    print("MODEL_NAME:", model_name)
     return Obj(tokenizer=tokenizer,device=device,model=model,model_name=model_name)
 
 def askQuestions():

@@ -14,9 +14,8 @@ $(document).ready(function() {
         contentType: 'application/json',
         data: JSON.stringify({ prompt: prompt, llm: llm }),
         success: function(response) {
-          // Handle the response from the backend API
           console.log(response);
-          // Perform any desired actions with the response data
+          $("#generated_response").text(response.generated_response);
         },
         error: function(error) {
           // Handle any errors that occur during the API request

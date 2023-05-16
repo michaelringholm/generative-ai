@@ -2,32 +2,28 @@ from flask import Flask, request, jsonify, render_template
 import bloom_bot_module
 import json
 
+LLMModelInitDone=False
+meta=any
 appName="web-api"
 app = Flask(appName, template_folder='html')
 #@app.route('/api/endpoint', methods=['POST'])
 @app.route('/api/generateResponse', methods=['POST'])
 def generateResponse():
+    global LLMModelInitDone
+    global meta
     data = request.json
-    meta=bloom_bot_module.init()
+    print("JSON Reuqest=",request.json)
+    prompt=request.json["prompt"]
+    llm=request.json["llm"]
+    if(LLMModelInitDone==False):
+        meta=bloom_bot_module.init()
+        LLMModelInitDone=True
     #bloom_bot_module.askQuestions()
-    print("Welcome to Bloom chat [using:", meta.model_name, "]")
-    print("MODEL:", meta.model)
-    print("DEVICE:", meta.device)
-    print("MODEL_NAME:", meta.model_name)
+
     print("---------------------------------------------------------------")
-    input_text = "In 30 words explain quantum physics?"
-    generatedResponse=bloom_bot_module.generate_response(meta.tokenizer, input_text, meta.device, meta.model)
-    print("---------------------------------------------------------------")
-    input_text = "In max 50 words explain the rules of football as we know it in Europe?"
-    bloom_bot_module.generate_response(meta.tokenizer, input_text, meta.device, meta.model)
-    print("---------------------------------------------------------------")
-    input_text = "In 20 words explain cloud computing?"
-    bloom_bot_module.generate_response (meta.tokenizer, input_text, meta.device, meta.model)
-    input_text = "In 20 words advise me how to make my teenage at home clean her room?"
-    bloom_bot_module.generate_response(meta.tokenizer, input_text, meta.device, meta.model)
-    input_text = "Create a short story, max 200 words, about a bear, a fox, and them playing football? The fox was evil."
-    bloom_bot_module.generate_response(meta.tokenizer, input_text, meta.device, meta.model)
-    response = {'message': 'Success', "response": generatedResponse}
+    generatedResponse=bloom_bot_module.generate_response(meta.tokenizer, prompt, meta.device, meta.model)
+    print(jsonify(generatedResponse))
+    response = {'message': 'Success', "generated_response": generatedResponse}
     return jsonify(response)
 
 @app.route('/', methods=['GET'])

@@ -16,7 +16,7 @@
         <form>
             <div class="form-group">
                 <label for="prompt">Prompt:</label>
-                <input type="text" class="form-control" id="prompt" name="prompt">
+                <input type="text" class="form-control" id="prompt" name="prompt" value="Please explain quantum physics to me in simple layman terms">
             </div>
 
             <div class="form-group">
@@ -27,6 +27,11 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="generated_response">generated_response:</label>
+                <textarea type="text" rows="5" class="form-control" id="generated_response" name="generated_response" value=""></textarea>
+            </div>
+            
             <button id="generate-response-btn" type="submit" class="btn btn-primary">Talk</button>
         </form>
     </div>
