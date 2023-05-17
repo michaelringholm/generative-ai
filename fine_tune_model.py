@@ -22,8 +22,22 @@ class CustomDataset(Dataset):
         return len(self.texts)
 
 # Load your custom dataset
-train_texts = ['Example sentence 1', 'Example sentence 2']
-train_labels = [0, 1]  # Example binary labels (0 or 1)
+train_texts = [
+    "I loved the movie. The storyline was captivating and the acting was brilliant.",
+    "The movie was hilarious and had great performances. A must-watch comedy.",
+    "The film was a mix of romance and action. It kept me engaged throughout.",
+    "The movie had stunning visuals and impressive cinematography. A visual treat.",
+    "The film was a psychological thriller with a twist ending. It kept me on the edge of my seat."
+]
+
+train_labels = [
+    ["Positive"],
+    ["Positive", "Funny"],
+    ["Positive", "Romance", "Action"],
+    ["Positive", "Visuals"],
+    ["Positive", "Thriller"]
+]
+
 
 train_dataset = CustomDataset(train_texts, train_labels)
 train_dataloader = DataLoader(train_dataset, batch_size=16, shuffle=True)
