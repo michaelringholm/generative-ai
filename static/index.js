@@ -1,7 +1,13 @@
 $(document).ready(function() {
     // When the button is clicked
     $('#generate-response-btn').click(function(e) {
-      e.preventDefault(); // Prevent the default form submission
+      generateResponse();
+    });
+  });
+
+  function generateResponse() {
+    //e.preventDefault(); // Prevent the default form submission
+    console.log("generateResponse() called...");
   
       // Get the input values
       var prompt = $('#prompt').val();
@@ -22,6 +28,19 @@ $(document).ready(function() {
           console.error(error);
         }
       });
-    });
-  });
+  }
+
+  function printUserMessage(message) {
+    var userMessageElement = $('<div>').addClass('user-message').text(message);
+    $('.chat-container').append(userMessageElement);
+  }
+
+  function printAssistantMessage(message) {
+    var assistantMessageElement = $('<div>').addClass('assistant-message').text(message);
+    $('.chat-container').append(assistantMessageElement);
+  }
+
+  // Example usage
+  //printUserMessage("Hello!");
+  //printAssistantMessage("Hi there! How can I assist you?");
   
